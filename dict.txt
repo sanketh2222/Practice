@@ -1,0 +1,6 @@
+d={
+   '100': {'BookTitle': 'Chanakya Neti ', 'Lend Date': '07-July', 'Count': 1},
+   '101': {'BookTitle': 'Bhagwat Gita   ', 'Lend Date': '07-July', 'Count': 2}, 
+   '102': {'BookTitle': 'Think and grow rich  ', 'Lend Date': '07-July', 'Count': 1},
+   '103': {'BookTitle': 'Chicken Soup for Chicken Soul ', 'Lend Date': '07-July', 'Count': 1}
+}

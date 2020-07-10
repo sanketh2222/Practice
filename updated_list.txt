@@ -1,0 +1,9 @@
+{'100': {'BookTitle': 'Chanakya Neti ', 'Lend Date': '08-July', 'LenderName': 'sanketh', 'Count': 0},
+ '101': {'BookTitle': 'Bhagwat Gita   ', 'Lend Date': '08-July', 'LenderName': '', 'Count': 2},
+ '102': {'BookTitle': 'Think and grow rich  ', 'Lend Date': '08-July', 'LenderName': '', 'Count': 1},
+ '103': {'BookTitle': 'Chicken Soup for Chicken Soul ', 'Lend Date': '08-July', 'LenderName': '', 'Count': 1}, 
+'104': {'BookTitle': 'Atomic Habbits ', 'Lend Date': '08-July', 'LenderName': '', 'Count': 0}, 
+'105': {'BookTitle': 'book1', 'Lend Date': '08-July', 'LenderName': 'NA', 'DonorName': 'vishal', 'Count': 1}, 
+'106': {'BookTitle': 'book2', 'Lend Date': '08-July', 'LenderName': 'NA', 'DonorName': 'vishal', 'Count': 3},
+ '107': {'BookTitle': 'book3', 'Lend Date': '08-July', 'LenderName': 'NA', 'DonorName': 'vishal', 'Count': 4}, 
+'108': {'BookTitle': 'book4', 'Lend Date': '08-July', 'LenderName': 'NA', 'DonorName': 'vishal', 'Count': 5}}
