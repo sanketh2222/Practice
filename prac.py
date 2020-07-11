@@ -1,4 +1,4 @@
-# n=int(input("Enter No\n"))
+# n=int(input("Enter No/n"))
 # choice=input("T/F")
 #
 # while 1:
@@ -41,7 +41,7 @@
 # for i in names:
 #     print(i,end=" ")
 #
-# print("\n")
+# print("/n")
 # a=",".join(names)
 # print(a)
 
@@ -63,7 +63,7 @@
 # water = datetime.datetime.now()
 # time.sleep(5)
 # water2 = datetime.datetime.now()
-# diff = datetime.datetime.strptime(str(water2), datetimeFormat) \
+# diff = datetime.datetime.strptime(str(water2), datetimeFormat) /
 #        - datetime.datetime.strptime(str(water), datetimeFormat)
 
 # print(diff.seconds)
@@ -122,13 +122,13 @@
 # while 1:
 #     if var==1:
 #         print("var is 1 now changing the value to 2")
-#         print("\nexecute only once")
+#         print("/nexecute only once")
 #         var=2
 #     else:
-#         print("sucessfully changed the value, \n now exiting the loop")
+#         print("sucessfully changed the value, /n now exiting the loop")
 #
 #
-# print("outside the loop\n")
+# print("outside the loop/n")
 
 # d={
 #     "a":1,
@@ -157,7 +157,7 @@ import datetime
 # water = datetime.datetime.now()
 # time.sleep(5)
 # water2 = datetime.datetime.now()
-# diff = datetime.datetime.strptime(str(water2), datetimeFormat) \
+# diff = datetime.datetime.strptime(str(water2), datetimeFormat) /
 #        - datetime.datetime.strptime(str(water), datetimeFormat)
 #
 # print(diff)
@@ -183,7 +183,7 @@ class Library:
         with open("BookList.txt") as b:
             content = b.readlines()
         for line in content:
-            if line.__contains__("\n"):
+            if line.__contains__("/n"):
                 self.lst.update({str(id): {"BookTitle": line[0:len(line) - 2],
                                            "Lend Date": getdate(),
                                            "LenderName": "",
@@ -199,15 +199,15 @@ class Library:
         self.cname = cname
         self.bid = bid
         if self.lst[choice]['Count'] == 0:
-            # print(self.lst[choice]["BookTitle"]+"is not available\n")
-            print(f"{self.lst[choice]['BookTitle']} is not available\n")
+            # print(self.lst[choice]["BookTitle"]+"is not available/n")
+            print(f"{self.lst[choice]['BookTitle']} is not available/n")
             print(f"Book already availed by {self.lst[choice]['LenderName']} on {self.lst[choice]['Lend Date']}")
         else:
             count = self.lst[choice]['Count'] - 1
             self.lst[choice]['Count'] = count
             self.lst[choice]["Lend Date"] = getdate()
             self.lst[choice]["LenderName"] = self.cname
-            print("Book issues sucessfully\n")
+            print("Book issues sucessfully/n")
 
         print("upated!!")
         print(self.lst)
@@ -219,7 +219,7 @@ class Library:
         print((self.no_of_books + 1) > 1)
         while no_of_books:
             print(f"Book No# {book_no}")
-            book_name = input("Book Title?\n")
+            book_name = input("Book Title?/n")
             count = int(input("Number of copies to be added?"))
             self.id += 1
             book_no += 1
@@ -247,9 +247,9 @@ class Library:
 # # print(type(content))
 # print(i[-2] print the character @ -2 index
 # for i in content:
-#     #print(i.find("\n"))#15,16,22
-#     if i.__contains__("\n"):
-#         print(i[-2],i[0:len(i)-2],"\n")
+#     #print(i.find("/n"))#15,16,22
+#     if i.__contains__("/n"):
+#         print(i[-2],i[0:len(i)-2],"/n")
 #         # print(i[0:len(i)-2])
 #     else:
 #       print(i[-1],i[0:len(i)-1])
@@ -262,7 +262,7 @@ class Library:
 # id=100
 # for line in content:
 #
-#     if line.__contains__("\n"):
+#     if line.__contains__("/n"):
 #         d.update({str(id):{"BookTitle": line[0:len(line)-2],
 #                            "Lend Date":getdate(),
 #                            "LenderName":"",
@@ -291,7 +291,7 @@ while 1:
         lib1.lend_books(name, choice)
     elif key_input.lower() == "a":
         # add books function
-        no_of_books = int(input("Number of Books?\n"))  # sample 3
+        no_of_books = int(input("Number of Books?/n"))  # sample 3
         # name = input("Your Name")
         lib1.add_books(no_of_books, name)
 
@@ -368,7 +368,7 @@ while 1:
 #     no-=1
 #
 # print(list)
-# print("1.List comp\n2.Dict comrehension\n3.Set comprehension")
+# print("1.List comp/n2.Dict comrehension/n3.Set comprehension")
 #
 # while 1:
 #     choice = int(input("Choice?"))
@@ -396,21 +396,174 @@ while 1:
 #     2:"item2"
 # }
 # dict2={value,key for key,value in dict1.items()}
-# print(dict,"\n",dict2)
+# print(dict,"/n",dict2)
 
 
-khana = ["roti", "Sabzi", "chawal"]
-
+# khana = ["roti", "Sabzi", "chawal"]
+#
+# # for item in khana:
+# #     if item=="roti"
+#
 # for item in khana:
-#     if item=="roti"
+#     if item == "roti":
+#         print(f"{item} found")
+#         break
+#
+# else:
+#     print("Your item was not found")
+from functools import lru_cache
 
-for item in khana:
-    if item == "roti":
-        print(f"{item} found")
-        break
+# val=int(input("Cached value"))
 
-else:
-    print("Your item was not found")
+# @lru_cache(maxsize=1)
+# def some_work(n):
+#     print("doing somework")
+#     time.sleep(n)
+#     print("grand success")
+#     return n
+
+# try except and finally and else:
+# if __name__ == '__main__':
+#
+#     some_work(3)
+#     print("second")
+#     print(some_work(3))
+#     print("third")
+#     print(some_work(3))
+#     print(some_work(3))
+#
+#
+# f1 = open("harry.txt")
+#
+# try:
+#     f = open("does2.txt")
+#
+# except EOFError as e:
+#     print("Print eof error aa gaya hai", e)
+#
+# except IOError as e:
+#     print("Print IO error aa gaya hai", e)
+#
+# else:
+#     print("This will run only if except is not running")
+#
+# finally:
+#     print("Run this anyway...")
+#     # f.close()
+#     f1.close()
+#
+# print("Important stuff")
+
+# ----coroutines
+
+# def searcher():
+#     import time
+#     # Some 4 seconds time consuming task
+#     book = "This is a book on harry and code with harry and good"
+#     time.sleep(4)
+#
+#     while True:
+#         text = (yield)
+#         if text in book:
+#             print("Your text is in the book")
+#         else:
+#             print("Text is not in the book")
+#
+# search = searcher()
+# print("search started")
+# next(search)
+# print("Next method run")
+# search.send("harry")
+#
+# search.close()
+# search.send("harry")
+# input("press any key")
+# search.send("harry and")
+# input("press any key")
+# search.send("thi si")
+# input("press any key")
+# search.send("joker")
+# input("press any key")
+# search.send("like this video")
+
+
+import os
+print(os.getcwd())
+path=os.chdir("C://Users/SANKETH/PycharmProjects/Practice/Files")
+#C:\Users\SANKETH\PycharmProjects\Practice\Files
+print(os.getcwd())
+
+
+count=0
+file_list=[]
+for i in range(1,6):
+    file_list.append(f"file{i}.txt")
+    # with open(f"file{i}.txt","a") as f:
+    #     f.write("sanketh")
+
+
+# for i in range(101,1001):
+#     file_list.append(f"file{i}.txt")
+#     with open(f"file{i}.txt","a") as f:
+#         f.write("sanketh")
+
+# for i in range(1,101):
+#     os.remove(f"file{i}.txt")--> delete all files
+
+# list.append("file")
+# print(file_list)
+# print(os.getcwd())
+# try:
+#     for file in file_list:
+#         # print(file)
+#         # print(os.getcwd())
+#         with open(file,"a") as f:
+#             f.write("sanketh")
+#
+# except:
+#     print(f"{file} file not found")
+
+
+
+# file_list=["file1.txt","file2.txt","file3.txt","file4.txt","file5.txt"]
+def search():
+    global count
+    dict={}
+    for file in file_list:
+        with open(file) as f:
+            content=f.readlines()
+            # print(content)
+            # print(count)
+            # print(dict)
+            dict[file]=content[count].replace("/n","")
+    print(dict)
+    dict2={value:key for key,value in dict.items()}
+    print(dict2)
+    time.sleep(4)
+
+
+
+    while True:
+        text=(yield )
+        if text in dict.values():
+            print(f"{text} found {dict2[text]}")
+        else:
+            print(f"{text} not found")
+
+s=search()
+s.__next__()
+s.send("Musk")
+print("after yield")
+s.send("Elon")
+
+
+#
+# for file in file_list:
+#     with open(file,"a") as f:
+#         f.write("")
+
+
+
 
 
 
