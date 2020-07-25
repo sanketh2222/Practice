@@ -10,12 +10,12 @@
 #         for j in range(n+1):
 #             print("*"*j)
 #             j=j+1
-
+#
 # def print_stud(normal,d):
 #     print(normal)
 #     for i in d:
 #         print(i,end=" ")
-# 
+
 # 
 # lst=["a","b","c","d"]
 # print_stud(34,lst)
@@ -359,7 +359,7 @@ while 1:
 # print(num.__next__())
 # print(num.__next__())
 
-#comprehension exercise:
+# comprehension exercise:
 # list=[]
 # no=int(input("no of items"))
 # while int(no)>=1:
@@ -390,7 +390,7 @@ while 1:
 #
 #     if choice==4:
 #         break
-
+#
 # dict1={
 #     1:"item1",
 #     2:"item2"
@@ -401,8 +401,8 @@ while 1:
 
 # khana = ["roti", "Sabzi", "chawal"]
 #
-# # for item in khana:
-# #     if item=="roti"
+# for item in khana:
+#     if item=="roti"
 #
 # for item in khana:
 #     if item == "roti":
@@ -411,17 +411,17 @@ while 1:
 #
 # else:
 #     print("Your item was not found")
-from functools import lru_cache
+# from functools import lru_cache
 
 # val=int(input("Cached value"))
-
+#
 # @lru_cache(maxsize=1)
 # def some_work(n):
 #     print("doing somework")
 #     time.sleep(n)
 #     print("grand success")
 #     return n
-
+#
 # try except and finally and else:
 # if __name__ == '__main__':
 #
@@ -455,15 +455,15 @@ from functools import lru_cache
 # print("Important stuff")
 
 # ----coroutines
-
+#
 # def searcher():
 #     import time
 #     # Some 4 seconds time consuming task
 #     book = "This is a book on harry and code with harry and good"
 #     time.sleep(4)
 #
-#     while True:
-#         text = (yield)
+#     while True:# from second time onwards executes from here.
+#         text = (yield)# making seracher as a coroutin. Also to received value from send
 #         if text in book:
 #             print("Your text is in the book")
 #         else:
@@ -487,20 +487,20 @@ from functools import lru_cache
 # search.send("like this video")
 
 
-import os
-print(os.getcwd())
-path=os.chdir("C://Users/SANKETH/PycharmProjects/Practice/Files")
-#C:\Users\SANKETH\PycharmProjects\Practice\Files
-print(os.getcwd())
-
-
-count=0
-file_list=[]
-for i in range(1,6):
-    file_list.append(f"file{i}.txt")
-    # with open(f"file{i}.txt","a") as f:
-    #     f.write("sanketh")
-
+# import os
+# print(os.getcwd())
+# path=os.chdir("C://Users/SANKETH/PycharmProjects/Practice/Files")
+# #C:\Users\SANKETH\PycharmProjects\Practice\Files
+# print(os.getcwd())
+#
+#
+# count=0
+# file_list=[]
+# for i in range(1,6):
+#     file_list.append(f"file{i}.txt")
+#     # with open(f"file{i}.txt","a") as f:
+#     #     f.write("sanketh")
+#
 
 # for i in range(101,1001):
 #     file_list.append(f"file{i}.txt")
@@ -526,35 +526,35 @@ for i in range(1,6):
 
 
 # file_list=["file1.txt","file2.txt","file3.txt","file4.txt","file5.txt"]
-def search():
-    global count
-    dict={}
-    for file in file_list:
-        with open(file) as f:
-            content=f.readlines()
-            # print(content)
-            # print(count)
-            # print(dict)
-            dict[file]=content[count].replace("/n","")
-    print(dict)
-    dict2={value:key for key,value in dict.items()}
-    print(dict2)
-    time.sleep(4)
-
-
-
-    while True:
-        text=(yield )
-        if text in dict.values():
-            print(f"{text} found {dict2[text]}")
-        else:
-            print(f"{text} not found")
-
-s=search()
-s.__next__()
-s.send("Musk")
-print("after yield")
-s.send("Elon")
+# def search():
+#     global count
+#     dict={}
+#     for file in file_list:
+#         with open(file) as f:
+#             content=f.readlines()
+#             # print(content)
+#             # print(count)
+#             # print(dict)
+#             dict[file]=content[count].replace("/n","")
+#     print(dict)
+#     dict2={value:key for key,value in dict.items()}
+#     print(dict2)
+#     time.sleep(4)
+#
+#
+#
+#     while True:
+#         text=(yield )
+#         if text in dict.values():
+#             print(f"{text} found {dict2[text]}")
+#         else:
+#             print(f"{text} not found")
+#
+# s=search()
+# s.__next__()
+# s.send("Musk")
+# print("after yield")
+# s.send("Elon")
 
 
 #
@@ -562,8 +562,469 @@ s.send("Elon")
 #     with open(file,"a") as f:
 #         f.write("")
 
+#--------OS Module
+
+
+# import os
+# print(dir(os))
+# print(os.getcwd())
+# os.chdir("C://")
+# print(os.getcwd())
+# f = open("harry.txt")
+# print(os.listdir("C://"))
+# os.makedirs("This/that")
+# os.rename("harry.txt", "codewithharry.txt")
+# print(os.environ.get('Path'))
+# print(os.path.join("C:/", "/harry.txt"))
+
+# print(os.path.exists("C://Program Files2"))
+# print(os.path.isfile("C://Program Files"))
+
+import os
+# path=os.path.join(os.getcwd(),"Files")
+# os.chdir(path)
+# onlyfiles = [f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]
+# print(onlyfiles)
+#
+# txtfiles =[file for file in onlyfiles if file[-3:]=="txt"]
+# txtfiles =[file for file in onlyfiles if file[-3:].lower()=="jpg"]
+# print(txtfiles)
+# string ="tamanna-bhatia-cute-hd-photos-1080p-dwehnq-400x533.JPG"
+# print(string.capitalize())
+# print(string[-3:].lower())#getting last 3 charecters of the string
+# print(onlyfiles)
+# def solider(path):
+#     count=1
+#     os.chdir(path)
+#     onlyfiles = [f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]
+#     txt_files = [file for file in onlyfiles if file[-3:] == "txt"]
+#     jpg_files = [file for file in onlyfiles if file[-3:].lower()=="jpg"]
+#     for jpg in jpg_files:
+#         os.rename(jpg,f"{count}.jpg")
+#         count+=1
+#
+#     for file in txt_files:
+#         os.rename(file,file.capitalize())
+#
+#
+#
+#
+# path=os.path.join(os.getcwd(),"Files")
+# os.chdir(path)
+# solider(path)
+
+
+#--------HTTP Requests
+
+
+# r = requests.get("https://financialmodelingprep.com/api/company/price/AAPL")
+# print(r.text)
+# print(r.status_code)
+
+# url = "https://aws.amazon.com/console/
+# data = {
+#     "p1":4,
+#     "p2":8
+# }
+# r2 = requests.post(url=url, data=data)
+
+# string ="Hey jarvis please open youtube for me"
+# processed=string.split(sep=" ")
+# print(processed.index("open"))
+# word=processed.index("open")+1
+# print(processed[word])
+
+# now=datetime.datetime.now()
+# now=now.strftime("%I:%M:%S %p")
+# print(now)
+
+# import wikipedia
+#
+# print(wikipedia.summary("BeerBiceps"))
+
+import os
+# for r,d,f in os.walk("c:\\"):
+#     for files in f:
+#          if files == "Telegram.exe":
+#               print(os.path.join(r,files))
+
+# https://www.google.com/search?q=how+to+improve+skills
+import webbrowser
+from googlesearch import search
+# string="https://www.google.com/search?q="
+# another="how to become rich"
+# another1=another.replace(" ","+")
+# print(another1)
+# print(string+another1)
+# url=string+another1
+# webbrowser.open(url)
+# query=googlesearch.search("Elon Musk")
+# print(query)
+# query = "beer biceps"
+#
+import json
+import requests
+import pyttsx3
+# f=open("file.json")
+
+# print(f.read())
+# data=json.load(f)
+# print(type(data))
+# print(data["Name"])
+# print(data["Age"])
+# f.close()
+
+# speak=pyttsx3.init()
+# rate = speak.getProperty('rate')   # getting details of current speaking rate
+# print (rate)
+# rate=speak.setProperty('rate',125) #seting up the voice rate
+# voices = speak.getProperty('voices')
+# speak.setProperty('voice', voices[1].id)# change to female voice 0--> Male 1 --> Female
+
+
+# url = ('http://newsapi.org/v2/top-headlines?'
+#        'country=in&'
+#        'apiKey=0f984866c30c4880967285aa463f328e')
+# response = requests.get(url)
+# class Counts:
+#     times=1
+#     def __init__(self):
+#         self.times=1
+#
+# c= Counts()
+# print("count class",c.times)
+#
+# response=requests.get("https://newsapi.org/v2/top-headlines?sources=the-hindu&apiKey=0f984866c30c4880967285aa463f328e")
+# # f=open("file1.txt","a")
+# f2=open("file2.txt","a")
+# # f.write(str(response.json()))
+# news=response.json()
+# print(type(news))#dict
+
+# data=json.dump(news,f2)
+
+#
+# print(response.json())
+# print(news['articles'][0]['description'])
+# head1=news['articles'][0]['description']
+# con1=news['articles'][0]['content']
+# con1=news['articles'][0]['url']
+# # print(type(head1))
+# print("content\n")
+# print(news['articles'][0]['content'])
+# speak.say(head1)
+# speak.runAndWait()
+#
+# speak.say(con1)
+# speak.runAndWait()
+#
+# speak.say("next up")
+#
+# print("news 2\n")
+#
+# print(news['articles'][1]['description'])
+# print("content\n")
+# print(news['articles'][1]['content'])
+#
+# speak.say(news['articles'][1]['description'])
+# speak.runAndWait()
+# speak.say(news['articles'][1]['content'])
+# speak.runAndWait()
+#
+# speak.say("next up")
+#
+# print(news['articles'][2]['description'])
+# print("content\n")
+# print(news['articles'][2]['content'])
+#
+#
+# speak.say(news['articles'][2]['description'])
+# speak.runAndWait()
+# speak.say(news['articles'][2]['content'])
+# speak.runAndWait()
+# f.close()
+#f2.close()
+# string="hello\n world"
+# print(string.splitlines())
+
+import re
+
+string =" My email @gmail contact is ssankethboss061@gmail.com and find sankeths94@gmail.com"
+# string1=string.split(" ")
+# for i in string1:
+#     if i.endswith("@gmail.com"):
+#         print(i)
+
+# Email Collector
+import re
+str ='''
+2
+'''
+# email1
+# email2
+# email3
+
+str = """
+
+ Email:enquiry@alliance.edu.in   Helpline: +91 80 3093 8100 / 8200 / 4619 9100
+ Media  Library  News  Webmail  Careers
+ Alliance University
+ Conferences
+ Admissions Open
+ Select Language
+UPDATES:
+ABOUT US 
+WHY AU 
+COLLEGES 
+FACULTY
+INTERNATIONAL PROGRAMS
+PROGRAMS
+RESEARCH
+ADMISSIONS 
+PLACEMENTS
+CONTACT US
+Contact UsHome Contact Us
+ Contact Us Back
+ Vice-Chancellor
+Dr. Pavana Dibbur
+ : vc@alliance.edu.in
+ : +91 80 3093 8100/4619 9100
+
+ Pro Vice-Chancellor (Academics, Research & Strategy)
+Dr. Anubha Singh
+ : anubha@alliance.edu.in
+ : +91 80 3093 8102
+
+ Registrar
+Mr. Madhu Sudan Mishra
+ : registrar@alliance.edu.in
+ : +91 80 3093 8100/4619 9100
+
+ Registrar (Examination & Evaluation)
+Dr. Sajan Mathew
+ : registrar.exams@alliance.edu.in
+ : +91 80 3093 8141
+
+ Director (Placements)
+Mr. Mathew Thankachan
+ : placement@alliance.edu.in | mathew.t@alliance.edu.in
+ : +91 80 3093 8124 | 98444 72674
+
+ Director (International Affairs)
+Mr. Rajen Chatterjee
+ : rajen.chatterjee@alliance.edu.in
+ : +91 80 3093 8075
+
+ Director (Admissions)
+Mr. Abhay Chebbi
+ : abhay.chebbi@alliance.edu.in
+ : +91 96636 46464
+
+ Human Resources Department
+ : hrd@alliance.edu.in
+ : +91 80 3093 8210 / 8204
+
+ Student Verification 
+Office of Registrar (Examination & Evaluation)
+ : edu.verify@alliance.edu.in
+ : +91 80 3093 8100 / 8200 | +91 80 4619 9100
+
+ Contacts Info
+ ALLIANCE UNIVERSITY
+ Central Campus
+Chikkahagade Cross, Chandapura - Anekal Main Road, Anekal
+Bengaluru – 562 106, Karnataka,   India. [ Get Route Map ]
++91 80 3093 8100/8200/4619 9100 | Fax: +91 80 4619 9099
+E-mail : enquiry@alliance.edu.in
+
+ Office of Admissions
+UG: +91 9620009825 | 91084 43123 | 91084 42143 | 98806 19618
+PG: +91 98860 02500 | 99002 29974 | 90083 16363
+
+ City Campus 1
+19th Cross, 7th Main, BTM 2nd Stage, N.S. Palya
+Bengaluru – 560 076, Karnataka,   India. [ Get Route Map ]
+Tel.: +91 80 26786020 / 21 , 26789749
+
+ City Campus 2
+2nd Cross, 36th Main, Dollars Scheme, BTM 1st Stage
+Bengaluru – 560 068, Karnataka,   India. [ Get Route Map ]
+Tel.: +91 80 26681444 / 4372 | Fax: +91 80 26782048
+
+ CONTACT INFO
+ Contact Us
+ Enquiry
+ Feedback
+ Get Route from Address
+Quick Course Finder
+
+
+Find Courses
+ SCHOOLS | COLLEGES
+ Alliance School of Business
+ Alliance College of Engineering and Design
+ Alliance School of Law
+ Alliance Ascent College
+ Planned Academic Units
+International Partners
+
+Antwerp Management School
+Antwerp Management School
+Belgium
+Royal Roads University
+Royal Roads University
+Canada
+Beijing Institute of Technology
+Beijing Institute of Technology
+China
+Nanjing University of Aeronautics and Astronautics
+Nanjing University of Aeronautics and Astronautics
+China
+The Sino-British College, USST,
+The Sino-British College, USST,
+China
+INSEEC
+INSEEC
+France
+IPAC School of Management
+IPAC School of Management
+France
+ISEP
+ISEP
+France
+Paris School of Business
+Paris School of Business
+France
+Telecom School of Management
+Telecom School of Management
+France
+Telecom SudParis
+Telecom SudParis
+France
+Toulouse Business School
+Toulouse Business School
+France
+Berlin School of Economics and Law
+Berlin School of Economics and Law
+Germany
+European Business School
+European Business School
+Germany
+University of Applied Sciences
+University of Applied Sciences
+Germany
+Duisenberg School of Finance
+Duisenberg School of Finance
+The Netherlands
+Maastricht School of Management
+Maastricht School of Management
+The Netherlands
+Russian Presidential Academy of National Economy and Public Admi. (RANEPA)
+Russian Presidential Academy of National Economy and Public Admi. (RANEPA)
+Russia
+Togliatti Academy of Management
+Togliatti Academy of Management
+Russia
+Edinburgh Napier University
+Edinburgh Napier University
+UK
+Federation of Schools (FEDE)
+Federation of Schools (FEDE)
+Switzerland
+Swansea Metropolitan University
+Swansea Metropolitan University
+UK
+University of Bedfordshire
+University of Bedfordshire
+UK
+University of Chester
+University of Chester
+UK
+University of Dundee
+University of Dundee
+UK
+Fairleigh Dickinson University
+Fairleigh Dickinson University
+USA
+Georgia State University
+Georgia State University
+USA
+Kennesaw State University
+Kennesaw State University
+US
+Oakland University
+Oakland University
+USA
+San Jose State University
+San Jose State University
+USA
+The University of Memphis
+The University of Memphis
+USA
+Webber International University
+Webber International University
+USA
+ International Programs
+ Testimonials
+ My two years at Alliance University have groomed me to be a confident individual ready to enter the corporate world and has deepened this confidence by helping me get a job in my dream organization. Alliance with its state of the art facilities, competitive curriculum, varied cultural mix and strong faculty base has motivated and guided m...  Read More
+
+ Kiran Varghese Jacob Kiran Varghese Jacob
+Google Google
+ Top University in India for MBA LAW Engineering & Arts and the Humanities
+Alliance University is a private University established in Karnataka State by Act No.34 of year 2010 and is recognized by the University Grants Commission (UGC), New Delhi... 
+
+About Us
+THE UNIVERSITY
+GOVERNANCE
+CORPORATE SOCIAL RESPONSIBILITY
+AACSB
+IACBE
+NIRF
+Useful Links
+PROGRAMS & COURSES
+INTERNATIONAL PROGRAMS
+RESULTS
+FEEDBACK
+DOWNLOADS
+PHOTO GALLERY
+Useful Links
+STUDENT VERIFICATION
+ALLIANCE ADVENTURE CLUB
+ANTI-RAGGING POLICY
+ROUTE MAP
+CONTACT US
+2018 © All Rights Reserved.  | Privacy Policy | Terms & Conditions | Disclaimer | Sitemap
 
 
 
 
+"""
 
+
+# email = re.findall(r"[0-9a-zA-Z._+%]+@[0-9a-zA-Z._+%]+[.][a-zA-Z.0-9]+", str)
+email = re.findall(r"[a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+\.[a-zA-Z]+",str)
+
+print(email)
+
+
+# pattern = re.compile(r'([a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+\.[a-zA-Z]+)')
+# pattern = re.compile(r'\+\w+ \w+ \w+ \w+')#extract phone no
+pattern = re.compile(r'\+[1,9]+ \d{2} \d{4} \d{4}')#extract phone no.
+match=pattern.findall(str)
+print(match)
+# string="i"
+# pat1=re.compile(r'a+i')
+# pat2=re.compile(r'a*i')
+# print(pat1.findall(string))
+# print(pat2.findall(string))
+
+# patt= re.compile("^s.*@gmail.com$")
+# patt2=re.compile("^\s")
+# match=patt2.findall(string)
+# print(match)
+# matches = patt.finditer(string)
+# print(type(matches))
+# print(patt.findall(string))
+# for match in matches:
+#     print("matches")
+#     print("matches",match)

@@ -995,28 +995,28 @@ L.lend_book("Sanketh", 'Chanakya Neti')
 # print(string[-2])
 # print(another[-1])
 
-import pyttsx3
-import PyPDF2
-import os
-
-os.chdir("C://Users/SANKETH/PycharmProjects/Practice/Files")
-# path=os.chdir("C://Users/SANKETH/PycharmProjects/Practice/Files")
-
-book=open("cn.pdf","rb")
-pdf=PyPDF2.PdfFileReader(book)
-print(pdf.numPages)
-speak=pyttsx3.init()
-rate = speak.getProperty('rate')   # getting details of current speaking rate
-print (rate)
-rate=speak.setProperty('rate',125)
-voices = speak.getProperty('voices')
-speak.setProperty('voice', voices[1].id)
-# speak.say("Hellow Sanketh")
-# speak.runAndWait()
-for page in range(1,47):
-    pageno=pdf.getPage(page)
-    text=pageno.extractText()
-    speak.say(text)
-    speak.runAndWait()
+# import pyttsx3
+# import PyPDF2
+# import os
+#
+# os.chdir("C://Users/SANKETH/PycharmProjects/Practice/Files")
+# # path=os.chdir("C://Users/SANKETH/PycharmProjects/Practice/Files")
+#
+# book=open("cn.pdf","rb")
+# pdf=PyPDF2.PdfFileReader(book)
+# print(pdf.numPages)
+# speak=pyttsx3.init()
+# rate = speak.getProperty('rate')   # getting details of current speaking rate
+# print (rate)
+# rate=speak.setProperty('rate',125)
+# voices = speak.getProperty('voices')
+# speak.setProperty('voice', voices[1].id)
+# # speak.say("Hellow Sanketh")
+# # speak.runAndWait()
+# for page in range(1,47):
+#     pageno=pdf.getPage(page)
+#     text=pageno.extractText()
+#     speak.say(text)
+#     speak.runAndWait()
 
 

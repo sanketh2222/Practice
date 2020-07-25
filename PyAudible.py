@@ -1,8 +1,8 @@
 import pyttsx3
 import PyPDF2
 import os
-
-os.chdir("C://Users/SANKETH/PycharmProjects/Practice/Files")
+path=os.path.join(os.getcwd(),"Files")
+os.chdir(path)
 # path=os.chdir("C://Users/SANKETH/PycharmProjects/Practice/Files")
 b=input("which book do you want to read today?")
 print(f"reading {b}.pdf for you\n")
