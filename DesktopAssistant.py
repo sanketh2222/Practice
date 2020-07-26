@@ -6,6 +6,7 @@ import os
 import datetime
 import time
 import requests
+import json
 
 engine=pyttsx3.init('sapi5')
 engine.setProperty('rate',172)
@@ -20,8 +21,14 @@ def speak(text):
     engine.say(text)
     engine.runAndWait()
 
-
-
+def weather(city):
+    response=requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=134b6fda987e9204b5cea01d566a247a")
+    weather_data=json.loads(response.text)
+    print(weather_data)
+    speak(f"its {weather_data['weather'][0]['description']} in {city}")
+    speak(f"feels like {round(int(weather_data['main']['temp_min'])-273.15)}  degrees in {city}")
+    speak(f"humidity is  {weather_data['main']['humidity']}  percent")
+    speak(f"wind speed is  {weather_data['wind']['speed']}")
 
 
 def Listen():
@@ -67,9 +74,14 @@ def news(count):
     print(news['articles'][count]['description'])
     head1 = news['articles'][count]['description']
     con1 = news['articles'][count]['content']
-    con1 = news['articles'][count]['url']
+    url = news['articles'][count]['url']
+    res = con1.index(r"[")
+    # removing junk contents
+    if r"[" in con1:
+        con1 = con1[0:res]
     speak(head1)
     speak(con1)
+    print(url)
 
 name=greet_user()
 # print(name)
@@ -129,6 +141,13 @@ while 1:
         speak("Next Up\n")
         news(2)
 
+    elif "how is the weather like" in query:
+        proc=list(query.split(" "))
+        print(proc)
+        print(len(proc))
+        city=proc[len(proc)-1]
+        print(city)
+        weather(city)
 
     else:
         speak("I didnt catch you there!!")
