@@ -306,46 +306,235 @@ for i in range(len(num)):
 
 
 # lst=[i for i in numbers if i%table!=0]
-import random
-list=[
-'Rohan Das',
-
-'Shubham Agarwal',
-
-'Ritesh Arora',
-
-'Ram Charan Teja',
-    
-'Elon Musk'
-]
-fname=[]
-for i in list:
-    fname.append(i.split(" ",1))
-fnames=[]
-lnames=[]
-
-# print(fname,"\n")
 
 
-for fn in fname:
-    fnames.append(fn[0])
+#weather API development
+# import requests
+# import json
 
-for ln in fname:
-    lnames.append(ln[1])
+# def speak(text):
+#     engine.say(text)
+#     engine.runAndWait()
+#
+# city="chennai"
+# response=requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=134b6fda987e9204b5cea01d566a247a")
+#
+# # print(type(response))
+#
+# weather_data=json.loads(response.text)
+#
+# # print(weather_data)
+# # print(type(weather_data))
+# print(f"{weather_data['weather'][0]['description']}")
+# print(f"feels like {round(int(weather_data['main']['temp_min'])-273.15)}  degrees in chennai")
+# print(f"humidity is  {weather_data['main']['humidity']}  percent")
+# print(f"wind speed is  {weather_data['wind']['speed']}")
+# # print(weather_data["weather"]["description"])
+#
+# speak(f"its {weather_data['weather'][0]['description']} in {city}")
+# speak(f"feels like {round(int(weather_data['main']['temp_min'])-273.15)}  degrees in {city}")
+# speak(f"humidity is  {weather_data['main']['humidity']}  percent")
+# speak(f"wind speed is  {weather_data['wind']['speed']}")
 
-print(fnames)
-# print(len(fnames))
-print(lnames)
-# print(len(lnames))
-rand=random.randint(0,len(fnames))
+# url = ('http://newsapi.org/v2/top-headlines?'
+#            'country=in&'
+#            'apiKey=d48128f52a774428a589dcab2548c687')
+#
+# response = requests.get(url)
+# # f=open("file1.txt","a")
+#  # f.write(str(response.json()))
+# news = response.json()
+# # print(response.json())
+# # print(news['articles'][0]['description'])
+# head1 = news['articles'][0]['description']
+# con1 = news['articles'][0]['content']
+# url = news['articles'][0]['url']
+# # print(head1)
+# print(con1)
+# # print(type(url))
+# con2=""
+# res=con1.index(r"[")
+# if r"[" in con1:
+#     con1=con1[0:res]
+# print(con1)
+    # print(url)
 
-count=0
-size=len(fnames)-1
-print(f"{size+1} funny names \n")
-while count<size+1:
-    rand = random.randint(0,size )
-    rand1 = random.randint(0, size)
-    res = fnames[count] + " " + lnames[rand1]
-    print(res)
-    count+=1
 
+# Reminder and notes function for AI desktop project
+
+import pyttsx3
+import speech_recognition as sr
+import datetime
+import time
+from pyautogui import typewrite
+from threading import Thread
+
+engine = pyttsx3.init('sapi5')
+engine.setProperty('rate', 172)
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)  # change to female voice 0--> Male 1 --> Female
+
+now = datetime.datetime.now()
+now = now.strftime("%d-%B")
+
+
+def Listen():
+    r1 = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("speak now")
+        audio = r1.listen(source)  # opens/starts the microphone
+        try:
+            text = r1.recognize_google(audio, language="en-in")  # get the text or content that you just spoke
+        except Exception as e:
+            print("I did not hear that")
+            return "None"
+            # speak("i did not hear that")
+        print(text)
+        return text
+
+
+def getdate():
+    import datetime
+    return time.asctime(time.localtime(time.time()))
+
+
+# query=Listen()
+# print(type(query))
+# print(query)
+query = "set a reminder at tomorrow 12:35 a.m."
+query2 = "set a reminder at tomorrow 2:00 p.m."
+
+event=0
+
+
+# q=input("listening..")
+processed_query = query.split(" ")
+# print(processed_query)
+# print(type(processed_query))
+proc = ""
+if processed_query.__contains__("tomorrow"):
+    data = processed_query.index("tomorrow")
+    # print(data)
+    proc = processed_query[data:len(processed_query)]
+    # print(list(now))  # dd -month
+    # print()
+    day = int(now[0:2])+1
+    # print(day)
+    proc[0]=day
+
+print(proc)
+if proc[2]=='p.m':
+    proc[2]="PM"
+else:
+    proc[2]="AM"
+
+# print(proc)
+rem_date=proc[0]
+rem_time=proc[1]+proc[2]
+# print(rem_date)
+# print(rem_time)
+rem_time=str(proc[1])
+d=rem_time.split(":")
+event=0
+rem_hour=int(d[0])
+if d[1]=="00":
+    d[1]=0
+    rem_min=0
+rem_min=int(d[1])
+# rem_hour=proc[1]
+# rem_min=
+print(d)
+
+
+
+datetimeFormat = '%A, %d %B %Y %I:%M%p'
+now1 = datetime.datetime.now()
+now1 = now1.strftime(datetimeFormat)
+now1=list(now1.split(" "))
+#
+# print(now1)
+#
+curr_time=now1[4]
+if curr_time[0]==0:
+    curr_time=curr_time[1:7]
+else:
+    curr_time = curr_time[0:7]
+curr_day=now1[1]
+# print(rem)
+print(curr_time)
+# print(curr_time[-2:])# AM OR PM of current time
+# print(curr_time[0:5])
+# curr_time.index(
+curr_hour=int(curr_time[0:curr_time.index(":")])
+if curr_time[3]!=0:
+    curr_min=int(curr_time[3:5])
+else:
+    curr_time=int(curr_time[4:5])
+print(curr_hour)
+print(curr_min)
+# print(curr_day)
+
+# event=proc[1]
+
+def t():
+    # time.sleep(10)  # wait for 15 seconds for input
+    # if first == 'waiting...':
+    # time
+    while 1:
+        datetimeFormat = '%A, %d %B %Y %I:%M%p'
+        now1 = datetime.datetime.now()
+        now1 = now1.strftime(datetimeFormat)
+        now1 = list(now1.split(" "))
+        curr_time = now1[4]
+        if curr_time[0] == 0:
+            curr_time = curr_time[1:7]
+        else:
+            curr_time = curr_time[0:7]
+        curr_day = now1[1]
+        # print(rem)
+        # print(curr_time)
+        # print(curr_time[-2:])# AM OR PM of current time
+        # print(curr_time[0:5])
+        # curr_time.index(
+        curr_hour = int(curr_time[0:curr_time.index(":")])
+        if curr_time[3] != 0:
+            curr_min = int(curr_time[3:5])
+        else:
+            curr_time = int(curr_time[4:5])
+        # print(curr_hour)
+        # print(curr_min)
+
+        # print(proc[2])
+        # print(curr_time[-2:])
+        # print("before condition")
+        if proc[2]==curr_time[-2:]:
+            # print(rem_hour)#12
+            # print(curr_hour)#12
+            # print(curr_min)  # 0
+            # print(rem_min)#12
+            # event=0
+            print(event)
+            if curr_hour>=rem_hour and curr_min>=rem_min and event==0:
+                print("reminding you")
+                # event=1
+                global event
+                event=1
+                # event=+1
+                break
+    #     typewrite('n')
+    #     typewrite(['enter'])
+
+while 1:
+    event=0
+    T = Thread(target=t)
+    T.start()
+    # q=input("Listening...")
+    # print("after input",q)
+    q= Listen()
+    print("after listening",q)
+
+
+# count=0
+# for i in now1:
+#     print(i,count)
+#     count+=1

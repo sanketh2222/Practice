@@ -8,17 +8,46 @@ import time
 import requests
 import json
 import smtplib, ssl
+import re
+
+
+mail_pattern=re.compile(r".*mail.*")
+news_pattern=re.compile(r".*news.*")
+weather_pattern=re.compile(r".*weather.*")
+time_pattern=re.compile(r".*time.*")
+
 
 engine = pyttsx3.init('sapi5')
 engine.setProperty('rate', 172)
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)  # change to female voice 0--> Male 1 --> Female
 
+
+
+mail_pattern=re.compile(r".*mail.*")
+news_pattern=re.compile(r".*news.*")
+weather_pattern=re.compile(r".*weather.*")
+time_pattern=re.compile(r".*time.*")
+wiki_search=re.compile(r".*who is.*")
+wiki_search1=re.compile(r".*wikipedia.*")
+
 def speak(text):
     engine.say(text)
     engine.runAndWait()
 
-
+def Listen():
+    r1 = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("speak now")
+        audio = r1.listen(source)  # opens/starts the microphone
+        try:
+            text = r1.recognize_google(audio, language="en-in")  # get the text or content that you just spoke
+        except Exception as e:
+            print("I did not hear that")
+            return "None"
+            # speak("i did not hear that")
+        print(text)
+        return text
 
 with open("credentials.txt") as f:
     user_name = f.readline().strip()  # remove strailing spaces from string
@@ -49,21 +78,29 @@ def mail(to, sub, msg):
 
     # Try to log in to server and send email
     try:
-        server = smtplib.SMTP(smtp_server, port)
-        server.ehlo()  # Can be omitted
-        server.starttls(context=context)  # Secure the connection
-        server.ehlo()  # Can be omitted
-        server.login(user_name, password)
-        # TODO: Send email here
-        server.sendmail(user_name, rec, f"Subject: {sub}\n\n {msg}")
-        print(f"mail sent to {to} sucessfully! ")
-        speak(f"mail sent to {to} sucessfully! ")
+
+        speak("are you sure you want to send the mail")
+        choice=Listen()
+        if choice.lower()=="yes":
+            server = smtplib.SMTP(smtp_server, port)
+            server.ehlo()  # Can be omitted
+            server.starttls(context=context)  # Secure the connection
+            server.ehlo()  # Can be omitted
+            server.login(user_name, password)
+            # TODO: Send email here
+            server.sendmail(user_name, rec, f"Subject: {sub}\n\n {msg}")
+            print(f"mail sent to {to} sucessfully! ")
+            speak(f"mail sent to {to} sucessfully! ")
+            server.quit()
+        else:
+            speak("ok,i am cancelling the mail")
+
 
     except Exception as e:
         # Print any error messages to stdout
         print(e)
-    finally:
-        server.quit()
+
+
 
 
 class count:
@@ -85,19 +122,7 @@ def weather(city):
     speak(f"wind speed is  {weather_data['wind']['speed']}")
 
 
-def Listen():
-    r1 = sr.Recognizer()
-    with sr.Microphone() as source:
-        print("speak now")
-        audio = r1.listen(source)  # opens/starts the microphone
-        try:
-            text = r1.recognize_google(audio, language="en-in")  # get the text or content that you just spoke
-        except Exception as e:
-            print("I did not hear that")
-            return "None"
-            # speak("i did not hear that")
-        print(text)
-        return text
+
 
 
 def greet_user():
@@ -129,13 +154,23 @@ def news(count):
     head1 = news['articles'][count]['description']
     con1 = news['articles'][count]['content']
     url = news['articles'][count]['url']
-    res = con1.index(r"[")
-    # removing junk contents
-    if r"[" in con1:
-        con1 = con1[0:res]
-    speak(head1)
-    speak(con1)
-    print(url)
+    # print(type(con1))
+    print(con1)
+    if head1!=None:
+        speak(head1)
+        print(url)
+
+
+    if con1!=None:
+        res = con1.index(r"[")
+        # removing junk contents
+        if r"[" in con1:
+            con1 = con1[0:res]
+        print(con1)
+        speak(con1)
+
+
+
 
 
 name = greet_user()
@@ -164,8 +199,11 @@ while 1:
         now = now.strftime("%I:%M:%S %p")
         speak(f"the time is {now}")
 
-    elif "wikipedia" in query.lower():
-        query.replace("wikipedia", "")
+    elif "wikipedia" or "who is" in query.lower():
+        if "wikipedia" in query:
+            query.replace("wikipedia", "")
+        else:
+            query = query.replace("who is", "").strip()
         try:
             speak(wikipedia.summary(query, sentences=2))
             print(wikipedia.summary(query, sentences=2))
@@ -187,30 +225,31 @@ while 1:
 
     elif "stop" in query:
         print("breaking\n")
-        break
+        exit(0)
 
-    elif "read the news" in query:
+    elif bool(news_pattern.findall(query)):
         news(0)
         speak("Next Up\n")
         news(1)
         speak("Next Up\n")
         news(2)
 
-    elif "the weather like" in query:
-        proc = list(query.split(" "))
-        print(proc)
-        print(len(proc))
-        city = proc[len(proc) - 1]
-        print(city)
-        weather(city)
+    # elif "the weather like" in query:
+    #     proc = list(query.split(" "))
+    #     print(proc)
+    #     print(len(proc))
+    #     city = proc[len(proc) - 1]
+    #     print(city)
+    #     weather(city)
+    #     continue
         
-    elif "weather" in query:
+    elif bool(weather_pattern.findall(query)):
         speak("which city?")
         city=Listen().lower()
         print(city)
         weather(city)
 
-    elif "send a mail" in query:
+    elif bool(mail_pattern.findall(query)):
         speak("to whom?")
         print("to whom?")
         to = Listen().lower()
