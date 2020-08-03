@@ -1,0 +1,42 @@
+import random
+list=[
+'Rohan Das',
+
+'Shubham Agarwal',
+
+'Ritesh Arora',
+
+'Ram Charan Teja',
+    
+'Elon Musk'
+]
+fname=[]
+for i in list:
+    fname.append(i.split(" ",1))
+fnames=[]
+lnames=[]
+
+# print(fname,"\n")
+
+
+for fn in fname:
+    fnames.append(fn[0])
+
+for ln in fname:
+    lnames.append(ln[1])
+
+print(fnames)
+# print(len(fnames))
+print(lnames)
+# print(len(lnames))
+rand=random.randint(0,len(fnames))
+
+count=0
+size=len(fnames)-1
+print(f"{size+1} funny names \n")
+while count<size+1:
+    rand = random.randint(0,size )
+    rand1 = random.randint(0, size)
+    res = fnames[count] + " " + lnames[rand1]
+    print(res)
+    count+=1

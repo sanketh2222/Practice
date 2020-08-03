@@ -1,0 +1,43 @@
+a,b,c=input("Enter 3 no.'s).split()# take 3 inputs in a single line
+print(a,b,c)
+
+# if multiple conditions have to be satisfied.
+
+condition=[
+a>1,
+b>1,
+c>1
+]
+
+if all(condition): # checking all coditions to be true
+   print("all conditions satisfied")
+   
+
+if any(coditions):
+	print("1 condition satisfied")
+	
+	
+# finding the most no.# of duplicated iteam in a list
+a=[1,2,2,2,2,2,2,3,4,5,7]
+set(a)# removes all duplicates
+res=max(set(a),key=a.count)
+
+# print(string[-3:].lower())#getting last 3 charecters of the string
+
+#Starting a simple web server with python
+
+python -m http.server
+
+
+json.loads()--------->  It is used to convert a json string to an dictonary
+json.dump()---------> It is used to convert a dictonary to an json string.
+josn.load()----------> It is used to read a file which contains an json object
+
+--API KEY FOR NEWSAPI
+0f984866c30c4880967285aa463f328e
+
+API Key for openweather api
+134b6fda987e9204b5cea01d566a247a
+http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=134b6fda987e9204b5cea01d566a247a
+api.openweathermap.org/data/2.5/weather?q=chennai&appid=134b6fda987e9204b5cea01d566a247a
+
