@@ -5,3 +5,23 @@ venv
 .idea/
 *.exe
 *.spec
+Files/
+file1.txt
+file2.txt
+.vscode/
+Automatic Birthday Wisher/Test version/
+Automatic Birthday Wisher/credentials.txt
+Automatic Birthday Wisher/data/
+Automatic Birthday Wisher/irkp (1).pem
+Automatic Birthday Wisher/irkp.pem
+Automatic Birthday Wisher/req.txt
+Automatic Birthday Wisher/req1.txt
+Data.xlsx
+auto/
+*.mp3
+tempCodeRunnerFile.py
+Flask/
+src/
+
+
+

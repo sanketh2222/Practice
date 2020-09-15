@@ -1018,5 +1018,57 @@ L.lend_book("Sanketh", 'Chanakya Neti')
 #     text=pageno.extractText()
 #     speak.say(text)
 #     speak.runAndWait()
+import os 
+from pygame import mixer
 
+import time
+# from playsound import playsound
+
+path=os.path.join(os.getcwd(),"Files/tests")
+os.chdir(path)
+print(os.listdir())
+# counter=0
+# file=open("sample.txt")
+# Content = file.read() 
+# CoList = Content.split("\n") 
+# # text=""    
+# for i in CoList: 
+#     if i: 
+#         counter += 1
+# print(f" total lines is   {counter}")
+# content=""
+# count=0
+# file=open("check.txt","a")
+# with open("logs.txt") as f:
+#     text=f.readlines()
+#     print(type(text))
+#     # text=list(text)
+#     text.remove("\n")
+#     for word in text:
+#         if count%4!=0:
+#             content+=word
+#             file.write(word)
+#             count+=1
+            
+        # file.write("\n")
+    # text=str(text)
+    # samp=text.replace("\n")
+    # file.write(str(text))
+    
+mixer.init()
+import pyttsx3
+# engine = pyttsx3.init()
+# engine.save_to_file('Hello World' , 'test1.mp3')
+# engine.runAndWait()
+
+# for i in range(5,76,4):
+#     mixer.music.load(f"welcome{i}.mp3")
+#     mixer.music.play()
+#     time.sleep((18))
+# mixer.music.load("test1.mp3")
+# mixer.music.play() 
+# time.sleep(5) 
+    
+# playsound("welcome5.mp3")  
+playsound.playsound("test1.mp3") 
 

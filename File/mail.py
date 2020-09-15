@@ -22,10 +22,10 @@ def mail(to,sub,msg):
         "elon":"sankeths94@gmail.com"
     }
     rec=mail_dict.get(to)
-    print(to)
-    print(sub)
-    print(msg)
-    print(user_name)
+    # print(to)
+    # print(sub)
+    # print(msg)
+    # print(user_name)
     # print(len(user_name))
     # user_name = "sherlock.holmes8907891"
     

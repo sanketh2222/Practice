@@ -162,11 +162,11 @@ while 1:
         second = 'waiting...'
 
 
-        def t():
-            time.sleep(10)  # wait for 5 seconds for input
-            if second == 'waiting...':
-                typewrite('n')
-                typewrite(['enter'])
+        # def t():
+        #     time.sleep(10)  # wait for 5 seconds for input
+        #     if second == 'waiting...':
+        #         typewrite('n')
+        #         typewrite(['enter'])
 
 
         T = Thread(target=t)
