@@ -5,10 +5,13 @@ import os
 from selenium import webdriver
 import pandas as pd
 import xlwings as xl
+from datetime import datetime
 
 url="https://www.nseindia.com/api/option-chain-indices?symbol=NIFTY"
 
-   
+
+
+# file_name=f"option_data_{datetime.now.strftime("%H%M")}" 
 # url="https://jsonplaceholder.typicode.com/todos"
 # url="https://www1.nseindia.com/homepage/Indices1.json"
 
@@ -86,6 +89,20 @@ def start_session(status):
                 session.cookies.set(cookie,cookie_dict[cookie])
     resp=session.get(url,headers=headers)
     return resp#status code
+
+def read_wrire_data():
+    with open("option_chain5.json") as f:
+        data=f.read()
+    data1=json.loads(data)#type cast into dict
+    print(type(data1))
+    ce_values= [value["CE"] for value in data1["filtered"]["data"] ]
+    pe_values= [value["PE"] for value in data1["filtered"]["data"] ]
+    ce=pd.DataFrame(ce_values).sort_values("strikePrice")
+    excel_file="chaindata.xlsx"
+    wb=xl.Book(excel_file)
+    single_sheet=wb.sheets("oidata")
+    single_sheet.clear_contents()
+    single_sheet.range("A1").options(index=False).value=ce
     
 def fetch_oi():
     try:
@@ -98,6 +115,8 @@ def fetch_oi():
         with open("option_chain5.json","a") as f:
             f.write(json.dumps(resp.json(),indent=4,sort_keys=True))
         print("executing from try")
+        read_wrire_data()
+        
     except Exception as e:
         print("executing from exception")
         session_cookie=get_session_cookie()
@@ -106,6 +125,7 @@ def fetch_oi():
         print(res)
         with open("option_chain5.json","a") as f:
             f.write(json.dumps(res.json(),indent=4,sort_keys=True))
+        read_wrire_data()
     # print(data)
 # print(type(data))
 

@@ -30,23 +30,37 @@ for i in dict:
 
 # print(type(resp))
 # print(resp)
-excel_file="chaindata.xlsx"
-wb=xl.Book(excel_file)
-single_sheet=wb.sheets("oidata")
 
-with open("option_chain4.json") as f:
-    data=f.read()
-    data1=json.loads(data)#type cast into dict
-    print(type(data1))
+
+# excel_file="chaindata.xlsx"
+# wb=xl.Book(excel_file)
+# single_sheet=wb.sheets("oidata")
+
+# with open("option_chain4.json") as f:
+#     data=f.read()
+#     data1=json.loads(data)#type cast into dict
+#     print(type(data1))
     
-ce_values= [value["CE"] for value in data1["filtered"]["data"] ]
-pe_values= [value["PE"] for value in data1["filtered"]["data"] ]
-ce=pd.DataFrame(ce_values).sort_values("strikePrice")
+    
+# ce_values= [value["CE"] for value in data1["filtered"]["data"] ]
+# pe_values= [value["PE"] for value in data1["filtered"]["data"] ]
+# ce=pd.DataFrame(ce_values).sort_values("strikePrice")
+
+
 # print(ce)
 # single_sheet.range("A2").value=ce
-single_sheet.clear_contents()
-single_sheet.range("A1").options(index=False).value=ce
-ce_data=[]
+
+
+# single_sheet.clear_contents()
+# single_sheet.range("A1").options(index=False).value=ce
+# ce_data=[]
+from datetime import datetime
+file_data=datetime.now().strftime("%d_%m")
+file_name=f"option_data_{file_data}.json" 
+print(file_name)
+# print(data)
+
+
 # wb.close()
 # file=open("test.json","a")
 # for i in data1["filtered"]["data"]:
