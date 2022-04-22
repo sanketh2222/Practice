@@ -100,7 +100,7 @@ pyjsparser==2.7.1
 pylint==2.5.2
 PyMsgBox==1.0.8
 pyparsing==2.4.7
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 pyperclip==1.8.0
 pypiwin32==223
 PyPrind==2.11.2
