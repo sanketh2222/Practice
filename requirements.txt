@@ -74,7 +74,7 @@ MarkupSafe==1.1.1
 mccabe==0.6.1
 mistune==0.8.4
 MouseInfo==0.1.3
-nbconvert==5.6.1
+nbconvert==6.3.0
 nbformat==5.0.7
 -e git+https://github.com/sanketh2222/vpc.git@6a2a353993d9f69cc6138eac5b41fbf3a0c2cce3#egg=new
 notebook==6.0.3
